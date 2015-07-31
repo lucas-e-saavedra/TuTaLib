@@ -1,0 +1,53 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'mylibrary'
+
+    publishedGroupId = 'com.tutacode'
+    libraryName = 'MyLibrary'
+    artifact = 'mylibrary'
+
+    libraryDescription = 'My personal Library'
+
+    siteUrl = 'https://github.com/tuta1612/TuTaLib'
+    gitUrl = 'https://github.com/tuta1612/TuTaLib.git'
+
+    libraryVersion = '0.0.1'
+
+    developerId = 'tuta1612'
+    developerName = 'Lucas Saavedra'
+    developerEmail = 'lucassaavedra@yahoo.com.ar'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:22.2.0'
+}
+
+apply from: '../install.gradle'
+apply from: '../bintray.gradle'
